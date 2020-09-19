@@ -6,10 +6,12 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
-
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
+
+const Database = require("@replit/database");
+client.db = new Database();
 
 const prefix = '.';
 
@@ -47,6 +49,9 @@ client.on('message', message => {
     }
     if (command === 'iroll') {
         client.commands.get('roll').run(client, message, args, true);   
+    }
+   if (command === 'ch') {
+        client.commands.get('character').run(client, message, args);   
     }
 });
 

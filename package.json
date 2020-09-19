@@ -12,7 +12,9 @@
   "author": "Simon Stoyanov",
   "license": "ISC",
   "dependencies": {
+    "@replit/database": "^2.0.0",
     "discord.js": "^12.3.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node.js": "latest"
   }
 }

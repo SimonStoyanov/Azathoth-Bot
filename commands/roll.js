@@ -59,8 +59,6 @@ module.exports = {
 
         }
 
-        let response = ``;
-
         let embColor = '0xff0000';
         let embTitle = `${message.author.username} ha lanzado los dados`;
         let embAuthIcon = `${message.author.displayAvatarURL()}`;
@@ -69,6 +67,7 @@ module.exports = {
         let embModifier;
         let embDC;
         let embResult;
+        let embiRoll;
 
         if (extra) {
             embResult = `**(${og_result}) -> ${result}**`;
@@ -82,11 +81,11 @@ module.exports = {
         if (iroll)
         {
             if (extra) {
-                response += isLess(result, args[3]);
+                embiRoll = isLess(result, args[3]);
                 embDC = `menor o igual a ${args[3]}`;
             } 
             else if (!isNaN(parseInt(args[1]))) {
-                response += isLess(result, args[1]);
+                embiRoll = isLess(result, args[1]);
                 embDC = `menor o igual a ${args[1]}`;
             }
             else {
@@ -97,7 +96,7 @@ module.exports = {
             embDC = `Sin DC`;
         }
 
-        message.channel.send(new Discord.MessageEmbed()
+        let embed = new Discord.MessageEmbed()
                 .setColor(embColor)
                 .setTitle(embTitle)
                 .setAuthor(`${message.author.username}`, `${embAuthIcon}`, 'https://discord.com/channels/@me/756251502464729128/756441337401704499')
@@ -106,35 +105,21 @@ module.exports = {
                     { name: 'Resultados individuales', value: `${embThrownDices}`},
                     { name: '⮚ Modificador', value: `${embModifier}`, inline: true},
                     { name: '⮚ DC', value: `${embDC}`, inline: true},
-                    { name: '\u200B', value: '\u200B' },
-                    { name: '⮚ Resultado:', value: `${embResult}`},
+                    { name: '⮚ Resultado:', value: `${embResult}`}
                 )
-        );
+
+        if (iroll) {
+          embed.addField('\u200B', `${embiRoll}`);
+        }
+
+        message.channel.send(embed);
     }
 }
 
-const rollEmbed = new Discord.MessageEmbed()
-    .setColor('#0099ff')
-    .setTitle('Some title')
-    .setURL('https://discord.js.org/')
-    .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-    .setDescription('Some description here')
-    .setThumbnail('https://i.imgur.com/wSTFkRM.png')
-    .addFields(
-        { name: 'Regular field title', value: 'Some value here' },
-        { name: '\u200B', value: '\u200B' },
-        { name: 'Inline field title', value: 'Some value here', inline: true },
-        { name: 'Inline field title', value: 'Some value here', inline: true },
-    )
-    .addField('Inline field title', 'Some value here', true)
-    .setImage('https://i.imgur.com/wSTFkRM.png')
-    .setTimestamp()
-    .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
-
 function isLess(res, toCompare) {
     if (res <= toCompare) {
-        return ` **⬶ÉXITO⤅**`
+        return `⚝⚝🞍**ÉXITO**🞍⚝⚝`
     } else {
-        return ` **⬶FALLO⤅**`
+        return `⚝⚝🞍**FALLO**🞍⚝⚝`
     }
 }
