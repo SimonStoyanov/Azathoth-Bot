@@ -63,6 +63,20 @@
 			background-color: green;
 			color: white;
 		}
+
+		.button {
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+    .discord {background-color: #008CBA;} /* Blue */
 	</style>
 </head>
 
@@ -81,10 +95,11 @@
 		</li>
 	</ul>
 
-	<h3>Azathoth Bot Web Page</h3>
-	<p>If you click on me, I will disappear.</p>
+	<h1>Azathoth Bot Web Page</h1>
 
-  <h1>Login con la API de Twitch JavaScript SDK</h1>
+	<button class="button discord" onclick=" window.open('https://discord.com/api/oauth2/authorize?client_id=756227745729609889&permissions=2146959219&scope=bot','_blank')">Añadir a discord</button>
+
+  <!--<h1>Login con la API de Twitch JavaScript SDK</h1>
 	<a href="#"><img src="https://brand.twitch.tv/assets/images/black.png" class="twitch-connect"/></a>
 
 	<div id="login-info">
@@ -94,6 +109,7 @@
 
 		<a id="btn-logout" class="btn btn-danger twitch-disconnect" href="#">Logout</a>
 	</div>
+  -->
 </body>
 <footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
